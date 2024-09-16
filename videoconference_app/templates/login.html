@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login | Video Conference</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    /* Custom Tailwind CSS Extensions */
+    .button-hover:hover {
+      @apply transform scale-105;
+    }
+    .login-button:hover {
+      @apply bg-blue-700 text-white;
+    }
+    .signup-button:hover {
+      @apply bg-green-700 text-white;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-400 to-teal-500 min-h-screen flex items-center justify-center">
+
+  <div class="text-center p-8 bg-white shadow-xl rounded-lg w-full max-w-lg mx-4">
+    <header class="text-3xl font-extrabold text-gray-800 mb-6">Login</header>
+    <form action="{% url 'login' %}" method="POST" class="space-y-4">
+      {% csrf_token %}
+      <input type="email" placeholder="Enter your email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+      <input type="password" placeholder="Enter your password" name="password" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+      <input type="submit" class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md cursor-pointer transition duration-300 login-button" value="Login">
+      <center>
+        {% if success %}
+        <p class="text-green-600 mt-4 font-semibold">{{ success }}</p>
+        {% endif %}
+        {% if error %}
+        <p class="text-red-600 mt-4">{{ error }}</p>
+        {% endif %}
+      </center>
+    </form>
+    <div class="text-center mt-6">
+      <span class="text-gray-600">Don't have an account? 
+        <a href="{% url 'register' %}" class="text-green-600 hover:underline signup-button">Signup</a>
+      </span>
+    </div>
+  </div>
+
+</body>
+</html>

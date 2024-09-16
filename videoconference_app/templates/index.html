@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Video Conference</title>
+  <link rel ="icon" href="data:,">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    /* Custom Tailwind CSS Extensions */
+    .button-hover:hover {
+      @apply bg-teal-700 text-black transform scale-105;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-400 to-teal-500 min-h-screen flex items-center justify-center">
+
+  <div class="text-center p-8 bg-white shadow-xl rounded-lg w-full max-w-lg mx-4">
+    <h1 class="text-4xl font-extrabold text-gray-800 mb-4">Welcome to My Awesome Video Conferencing App!</h1>
+    <h2 class="text-xl font-medium text-gray-600 mb-6">For all your professional and personal needs!</h2>
+    <div class="space-y-4">
+      <a href="{% url 'login' %}" class="button-hover px-6 py-3 bg-teal-600 text-black text-lg font-semibold rounded-lg shadow-md inline-block transition duration-300">Sign In</a>
+      <a href="{% url 'register' %}" class="button-hover px-6 py-3 bg-teal-700 text-black text-lg font-semibold rounded-lg shadow-md inline-block transition duration-300">Sign Up</a>
+    </div>
+  </div>
+
+</body>
+</html>
